@@ -91,7 +91,7 @@ if (compra == "si"){
     }
     console.log("El ingreso total del día por ventas es: $" + total);
     alert("Compra finalizada");
-    //console.log(ingreso_venta);
+    console.log(ingreso_venta);
     document.write("TOTAL A PAGAR: $" + total + "<br>" + "<br>" + " ");
     document.write("Muchas gracias por su compra. Vuelva pronto!!!" + "<br>" + " ");
     document.write("(Si usted trabaja en la empresa, habra la consola)");
