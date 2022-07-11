@@ -63,11 +63,11 @@ if (compra == "si"){
             total = total + suma
             ingreso_venta.push(ingresos);
             document.write("Producto: " + producto + "<br>" + "Precio por unidad: $" + venta.precio + "<br>" + "Unidades: " + unidades + "<br>" + "Total: $" + ingresos + "<br>" + "<br>" + " ");
-            console.log("Producto: " + producto);
-            console.log("Precio: $" + parseInt(venta.precio));
-            console.log("Unidades vendidas: " + unidades);
-            console.log("Stock restante: " + (venta.stock - unidades));
-            console.log("Ingresos: $" + ingresos);           
+            console.log("Producto:" , producto);
+            console.log("Precio: $" , parseInt(venta.precio));
+            console.log("Unidades vendidas:" , unidades);
+            console.log("Stock restante:" , (venta.stock - unidades));
+            console.log("Ingresos: $" , ingresos);           
             console.log("<------------->");
             compra = prompt("Desea seguir comprando? SI o NO");
             /* let venta_delete = ingreso_venta.indexOf(0);
@@ -89,7 +89,7 @@ if (compra == "si"){
             alert("Responda únicamente SI o NO")
         }
     }
-    console.log("El ingreso total del día por ventas es: $" + total);
+    console.log("El ingreso total del día por ventas es: $" , total);
     alert("Compra finalizada");
     console.log(ingreso_venta);
     document.write("TOTAL A PAGAR: $" + total + "<br>" + "<br>" + " ");
