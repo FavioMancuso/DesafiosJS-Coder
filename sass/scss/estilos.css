@@ -387,12 +387,28 @@ footer .border-bottom {
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
 header {
   background-color: white;
   font-size: medium;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+header .header-mobile {
+  display: flex;
+}
+header .header-lg {
+  display: none;
 }
 header .d-flex {
-  display: flex !important;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -429,10 +445,20 @@ header .section-end a {
   text-decoration: none;
   color: black;
 }
+@media screen and (min-width: 992px) {
+  header .header-mobile {
+    display: none;
+  }
+  header .header-lg {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 main {
   height: auto;
   padding-bottom: 0rem;
+  flex-direction: row;
 }
 main p {
   color: white;
@@ -443,6 +469,9 @@ main p {
   padding-bottom: 0;
   margin-bottom: 0;
   text-align: center;
+}
+main .productos-header {
+  display: none;
 }
 main .row {
   width: 93%;
@@ -512,4 +541,38 @@ main .row img {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
+}
+@media screen and (min-width: 992px) {
+  main .filter {
+    height: auto;
+    width: 15%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  main .productos {
+    width: 100%;
+  }
+  main .productos-header {
+    display: flex;
+    width: auto;
+  }
+  main .productos-header .d-flex {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  main .productos-header .d-flex .h-100 {
+    width: 16rem;
+  }
+  main .productos-header .d-flex .h-100 .card-body {
+    padding-bottom: 0;
+  }
+  main .productos-header .d-flex .h-100 .text-center p {
+    font-size: 1rem;
+    color: black;
+  }
+  main #productos-mobile {
+    display: none;
+  }
 }/*# sourceMappingURL=estilos.css.map */

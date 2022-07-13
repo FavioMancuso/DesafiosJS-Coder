@@ -1,11 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
 $color1: rgb(3, 37, 48);
+
+$breakpoints: (
+    sm : 540px, md : 768px , lg : 992px
+);
+
+@mixin media-up($breakpoint) {
+    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+        @content
+    }
+}
 
 header {
     background-color: white;
     font-size: medium;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    .header-mobile{
+        display: flex;
+    }
+    
+    .header-lg{
+        display: none;
+    }
 
     .d-flex {
-        display: flex!important;
+        display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -52,11 +79,23 @@ header {
             color: black;
         }
     }
+
+    @include media-up(lg){
+            .header-mobile{
+                display: none;
+            }
+            
+            .header-lg{
+                display: flex;
+                flex-direction: column;
+            }
+        }
 }
 
 main {
     height: auto;
     padding-bottom: 0rem;
+    flex-direction: row;
 
     p {
         color: white;
@@ -67,6 +106,10 @@ main {
         padding-bottom: 0;
         margin-bottom: 0;
         text-align: center;
+    }
+
+    .productos-header{
+        display: none;
     }
 
     .row {
@@ -145,6 +188,52 @@ main {
             width: 100%;
             height: auto;
             border-radius: 0.5rem;
+        }
+    }
+
+    @include media-up(lg){
+        .filter{
+            height: auto;
+            width: 15%;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .productos {
+            width: 100%;
+        }
+
+        .productos-header{
+            display: flex;
+            width: auto;
+
+            .d-flex {
+                flex-direction: row;
+                justify-content: space-evenly;
+            
+                    .h-100{
+                    width: 16rem;
+
+                    .card-body {
+                        padding-bottom: 0;
+                    }
+
+                    .text-center {
+
+                        p{
+                        font-size: 1rem;
+                        color: black;
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        #productos-mobile{
+            display: none;
         }
     }
 }
