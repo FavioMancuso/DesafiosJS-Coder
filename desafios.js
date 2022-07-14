@@ -10,7 +10,7 @@ class Productos {
 
 let productos = []
 
-let producto1 = new Productos ("Jarron" , 1500 , 10)
+let producto1 = new Productos ("Jarron" , 1500 , 20)
 productos.push(producto1)
 let producto2 = new Productos ("Vaso" , 800 , 20)
 productos.push(producto2)
@@ -55,6 +55,7 @@ if (compra == "si"){
                 alert("No es posible realizar esta venta de " + unidades + " unidades por falta de stock. Disculpe.");
                 unidades = 0;
                 producto = ( venta.nombre + " (no pudo realizare por falta de stock)");
+                console
             }
             let ingresos = {ingreso:(parseInt(venta.precio) * unidades)};
             ingreso_venta.push(ingresos);
@@ -91,8 +92,7 @@ if (compra == "si"){
     alert("Compra finalizada");
     console.log("El ingreso total del día por ventas es: $" , total);
     document.write("TOTAL A PAGAR: $" + total + "<br>" + "<br>" + " ");
-    // filtrar las compras 0 y eliminarlas del array - despues entregar //
-    let filtro = ingreso_venta.filter(function(nulo){  // funcion anonima
+    let filtro = ingreso_venta.filter(function(nulo){
         return nulo.ingreso > 0
     });
     console.log("Detalle de las Ventas:" , filtro);
