@@ -575,4 +575,24 @@ main .row img {
   main #productos-mobile {
     display: none;
   }
+}
+
+body {
+  background-color: rgb(3, 37, 48);
+}
+
+main p {
+  text-align: center;
+}
+main .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+main .container div {
+  width: 80%;
+  background-color: white;
+  color: black;
+  cursor: initial;
 }/*# sourceMappingURL=estilos.css.map */

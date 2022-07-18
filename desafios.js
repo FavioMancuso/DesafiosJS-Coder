@@ -1,107 +1,99 @@
-// DESAFIO COMPLEMENTARIO: Agregar Arrays //
-
 class Productos {
-    constructor (nombre , precio , stock){
+    constructor (id , nombre , precio , stock , img , categoria){
+        this.id = id
         this.nombre = nombre
         this.precio = precio
         this.stock = stock
+        this.img = img
+        this.categoria = categoria
     }
 }
 
 let productos = []
 
-let producto1 = new Productos ("Jarron" , 1500 , 20)
+let producto1 = new Productos ( 1 , "Mate" , 1500 , 20 , "./img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg" , "mates")
 productos.push(producto1)
-let producto2 = new Productos ("Vaso" , 800 , 20)
+let producto2 = new Productos ( 2 , "Salsero" , 500 , 20 , "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg" , "cocina")
 productos.push(producto2)
-let producto3 = new Productos ("Botella" , 1000 , 10)
+let producto3 = new Productos ( 3 , "Taza" , 2500 , 20 , "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg" , "vajilla")
 productos.push(producto3)
-let producto4 = new Productos ("Fuente" , 2500 , 6)
-productos.push(producto4)
-let producto5 = new Productos ("Boul" , 1500 , 20)
-productos.push(producto5)
-let producto6 = new Productos ("Taza" , 900 , 20)
-productos.push(producto6)
-let producto7 = new Productos ("Tetera" , 2500 , 5)
-productos.push(producto7)
-let producto8 = new Productos ("Plato" , 1100 , 30)
-productos.push(producto8)
-let producto9 = new Productos ("Recipiente" , 1000 , 10)
-productos.push(producto9)
-let producto10 = new Productos ("Tazón" , 1500 , 5)
-productos.push(producto10)
 
-alert("Bienvenido a DECOVSR");
-let compra = prompt("¿Desea realizar una compra?");
-console.log("Catálogo:",productos);
-if (compra == "si"){
-    document.write("El detalle de su compra es:" + "<br>" + "<br>" + " ");
-    console.log("VENTA DEL DÍA:")
-    console.log(" ")
-    let ingreso_venta = [];
-    for (let venta of productos) {
-        let producto = venta.nombre;
-        alert("Producto: " + producto + " - Precio: $" + venta.precio);
-        compra = prompt("Desea comprar el producto " + venta.nombre + "?");
-        if (compra == "si" || compra == "Si" || compra == "SI"){
-            let unidades = parseInt(prompt("Indique las unidades que desea comprar"));
-            if (unidades > 1 & unidades <= venta.stock){
-            alert("Se agregaron al carrito " + unidades + " unidades del producto " + venta.nombre + " por un total de: $" + (unidades * venta.precio));
-            }
-            else if (unidades == 1){
-                alert("Se agregó al carrito " + unidades + " unidad del producto " + venta.nombre + " por un total de: $" + (unidades * venta.precio));
-            }
-            else if (unidades > venta.stock){
-                alert("No es posible realizar esta venta de " + unidades + " unidades por falta de stock. Disculpe.");
-                unidades = 0;
-                producto = ( venta.nombre + " (no pudo realizare por falta de stock)");
-                console
-            }
-            let ingresos = {ingreso:(parseInt(venta.precio) * unidades)};
-            ingreso_venta.push(ingresos);
-            document.write("Producto: " + producto + "<br>" + "Precio por unidad: $" + venta.precio + "<br>" + "Unidades: " + unidades + "<br>" + "Total: $" + venta.precio * unidades + "<br>" + "<br>" + " ");
-            console.log("Producto:" , producto);
-            console.log("Precio: $" , parseInt(venta.precio));
-            console.log("Unidades vendidas:" , unidades);
-            console.log("Stock restante:" , (venta.stock - unidades));
-            console.log(ingresos);           
-            console.log("<------------->");
-            compra = prompt("Desea seguir comprando? SI o NO");
-            if (compra == "no" || compra == "No" || compra == "NO"){
-                break;
-            }
-            else if (compra == "si" || compra == "Si" || compra == "SI"){
-                alert("Siguiente producto");
-            }
-            else {
-                alert("Responda únicamente SI o NO")
-            }
-        }
-        else if (compra == "no" || compra == "No" || compra == "NO"){
-            alert("Entendido! Siguiente producto");
-        }
-        else {
-            alert("Responda únicamente SI o NO")
-        }
-    }
-    
-    let total = ingreso_venta.reduce(function(acc , precio){
-        acc = acc + precio.ingreso
-        return acc
-    },0)
-    alert("Compra finalizada");
-    console.log("El ingreso total del día por ventas es: $" , total);
-    document.write("TOTAL A PAGAR: $" + total + "<br>" + "<br>" + " ");
-    let filtro = ingreso_venta.filter(function(nulo){
-        return nulo.ingreso > 0
-    });
-    console.log("Detalle de las Ventas:" , filtro);
-    document.write("Muchas gracias por su compra. Vuelva pronto!!!" + "<br>" + " ");
-    document.write("(Si usted trabaja en la empresa, abra la consola)");
+for (let producto of productos) {
+let cartas = document.getElementById("card")
+cartas.innerHTML += `
+                    <div class="card h-100">
+                        <img class="card-img" src="${producto.img}"/>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="name" style="color: black;">${producto.nombre} - <span class="price" id="precio" style="color: black;">$${producto.precio}</span></p>
+                            </div>
+                        </div>
+                        <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a id="agregar_al_carro" class="btn btn-outline-dark mt-auto" href="#" data-bs-toggle="modal" data-bs-target="#modalCompra${producto.id}">Agregar al <i class="bi bi-cart2"></i></a></div>
+                            <!--<div class="text-center"><a class="btn btn-dark mt-1" href="#">Comprar ahora</i></a></div>-->
+                        </div> 
+                    </div>
+                    <section id="open-modal">
+                        <div tabindex="-1" aria-labelledby="modalCompra${producto.id}" class="modal fade" style="background-color: rgba(0, 0, 0, 0.5);" id="modalCompra${producto.id}" aria-hidden="true" data-bs-backdrop="static">
+                            <div class="modal-dialog modal modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header d-flex justify-content-between align-items-center">
+                                        <p class="p m-0" style="color: black;">${producto.nombre}</p>
+                                        <button type="button" class="btn-close align-self-end p-0 m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body modal-body">
+                                        <div class="div d-flex flex-row justify-content-between">
+                                            <img src="${producto.img}" alt="" width="49%" height="300px">
+                                            <img src="${producto.img}" alt="" width="49%" height="300px">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex flex-row justify-content-between">
+                                        <div class="div">
+                                            <label class="btn" style="cursor: initial; border: solid 1px black;" for="">Unidades:</label>
+                                            <input class="btn" id="unidad" type="number" name="unidades" placeholder="1" style="width: 20%; border: solid 1px black; cursor: text;">
+                                            <button class="btn mx-2" id="confirmar_unidad" for="">Confirmar</button>
+                                            <div id="unidad-precio">
+                                            <span id="total">Total: $${producto.precio}</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="agregado_al_carro()" class="btn btn-outline-dark mt-auto" data-bs-dismiss="modal">Agregar al <i class="bi bi-cart2"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `  
+                let confirmar_unidad = document.getElementById("confirmar_unidad")
+                confirmar_unidad.addEventListener("click" , function(){
+                    let unidad = document.getElementById("unidad")
+                    unidad = unidad.value
+                    let total = document.getElementById("total")
+                    total.innerText = "Total: $" + (unidad * producto.precio)
+                })
+
+                function agregado_al_carro() {
+                    let num = 0
+                    let carro = document.getElementById("carro")
+                    num = num + 1
+                    carro.innerText = num
+                }
 }
-else if (compra == "no" || compra == "No" || compra == "NO"){
-    alert("¡Regrese cuando quiera comprar algo!");
-}
-else {
-    alert("Responda unicamente SI o NO")
-}
+
+
+    /*    let carroProductos = document.getElementById("compras")
+            carroProductos.innerHTML = `
+                <div class="container btn m-2 p-2 d-flex flex-row justify-content-between">
+                    <div class="btn">Producto: </div>
+                    <div class="btn">Unidades:</div>
+                    <div class="btn">Precio por unidad:</div>
+                    <div class="btn">Total:</div>
+                    
+                </div>   
+                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red" id="eliminar"></div> 
+        `   */ 
+
+
+        
+
+
+

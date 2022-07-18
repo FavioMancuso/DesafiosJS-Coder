@@ -1,0 +1,22 @@
+body {
+    background-color: $color1;
+}
+main {
+    p {
+        text-align: center;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        div {
+            width: 80%;
+            background-color: white;
+            color: black;
+            cursor: initial;
+        }
+    }
+}
