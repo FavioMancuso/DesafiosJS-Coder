@@ -581,18 +581,22 @@ body {
   background-color: rgb(3, 37, 48);
 }
 
-main p {
-  text-align: center;
-}
-main .container {
+#carro {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
-main .container div {
-  width: 80%;
-  background-color: white;
+#carro #compras {
+  margin: 0 auto;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(3, 37, 48);
   color: black;
   cursor: initial;
+}
+#carro #compras p {
+  margin: 0 auto;
+  text-align: center;
 }/*# sourceMappingURL=estilos.css.map */

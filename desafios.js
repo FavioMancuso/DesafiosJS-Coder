@@ -18,9 +18,10 @@ productos.push(producto2)
 let producto3 = new Productos ( 3 , "Taza" , 2500 , 20 , "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg" , "vajilla")
 productos.push(producto3)
 
-for (let producto of productos) {
-let cartas = document.getElementById("card")
-cartas.innerHTML += `
+for (let producto of productos) 
+{
+    let cartas = document.getElementById("card")
+    cartas.innerHTML += `
                     <div class="card h-100">
                         <img class="card-img" src="${producto.img}"/>
                         <div class="card-body">
@@ -47,52 +48,84 @@ cartas.innerHTML += `
                                             <img src="${producto.img}" alt="" width="49%" height="300px">
                                         </div>
                                     </div>
-                                    <div class="modal-footer d-flex flex-row justify-content-between">
-                                        <div class="div">
-                                            <label class="btn" style="cursor: initial; border: solid 1px black;" for="">Unidades:</label>
-                                            <input class="btn" id="unidad" type="number" name="unidades" placeholder="1" style="width: 20%; border: solid 1px black; cursor: text;">
-                                            <button class="btn mx-2" id="confirmar_unidad" for="">Confirmar</button>
-                                            <div id="unidad-precio">
-                                            <span id="total">Total: $${producto.precio}</span>
+                                    <div class="modal-footer d-flex flex-column">
+                                        <div class="div d-flex">
+                                            <div>
+                                                <label class="btn" style="cursor: initial; border: solid 1px black;" for="">Unidades:</label>    
+                                                <input class="btn unidad " type="number" name="unidades" placeholder="1" style="border: solid 1px black; width: 20%; cursor: text;">
+                                            </div>
+                                            <div>    
+                                                <button class="btn mx-2 confirmar_unidad" style="border: solid 1px black;" value=${producto.precio}>Confirmar <i class="bi bi-check-circle"></i></button>
                                             </div>
                                         </div>
-                                        <button onclick="agregado_al_carro()" class="btn btn-outline-dark mt-auto" data-bs-dismiss="modal">Agregar al <i class="bi bi-cart2"></i></button>
+                                        <button id="agregado_al_carro "onclick="agregado_al_carro(${producto.id})" class="justify-content-center btn btn-outline-dark mt-auto" data-bs-dismiss="modal">Agregar al <i class="bi bi-cart2"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                `  
-                let confirmar_unidad = document.getElementById("confirmar_unidad")
-                confirmar_unidad.addEventListener("click" , function(){
-                    let unidad = document.getElementById("unidad")
-                    unidad = unidad.value
-                    let total = document.getElementById("total")
-                    total.innerText = "Total: $" + (unidad * producto.precio)
-                })
-
-                function agregado_al_carro() {
-                    let num = 0
-                    let carro = document.getElementById("carro")
-                    num = num + 1
-                    carro.innerText = num
-                }
+                `
 }
 
+const carrito = []
 
-    /*    let carroProductos = document.getElementById("compras")
-            carroProductos.innerHTML = `
-                <div class="container btn m-2 p-2 d-flex flex-row justify-content-between">
-                    <div class="btn">Producto: </div>
-                    <div class="btn">Unidades:</div>
-                    <div class="btn">Precio por unidad:</div>
-                    <div class="btn">Total:</div>
-                    
-                </div>   
-                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red" id="eliminar"></div> 
-        `   */ 
+function agregado_al_carro(id)
+{   
+    let index = 0
+    let producto = productos.find(element => element.id == id);
+    if(producto)
+    {
+        carrito.push(producto);
+        let carroVacio = document.getElementById("carroVacio")
+        carroVacio.innerText = ""
+        let carroProductos = document.getElementById("compras")
+        carroProductos.innerHTML += `
+            <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
+                <div class="btn">Producto: ${producto.nombre}</div>
+                <div class="btn">Unidades: ${getUnidad(index)}</div>
+                <div class="btn">Precio por unidad: ${producto.precio}</div>
+                <div class="btn">Total: ${getUnidad(index) * producto.precio}</div>  
+                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red" onclick="eliminar(${producto.id})"></div>   
+            </div>   
+        ` 
+        index++
+    }
+    console.log(carrito)
+    let carro = document.getElementById("carrobutton");
+    let num = carrito.length;
+    carro.innerText = num;
+}
 
+const getUnidad = (index) =>
+{
+    let unidadbuttons = document.getElementsByClassName("unidad");
+    let i = 0;
+    for (const button of unidadbuttons)
+    {
+        if(i == index)
+        {
+            return button.value;
+        }
+        i++;
+    }
+}
 
+const loadConfirmEvents = () =>
+{
+    let confirmbuttons = document.getElementsByClassName("confirmar_unidad");
+    let index = 0;
+    for (const button of confirmbuttons)
+    {
+        button.addEventListener("click" , function(){
+            let value = button.value;
+            console.log("value" , value);
+            let unidad = getUnidad(index);
+            console.log('unidad' ,  unidad);    
+            index++     
+        });
+    }
+}
+loadConfirmEvents();
         
 
 
