@@ -471,7 +471,7 @@ main p {
   text-align: center;
 }
 main .productos-header {
-  display: none;
+  display: flex;
 }
 main .row {
   width: 93%;

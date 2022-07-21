@@ -1,28 +1,38 @@
-class Productos {
-    constructor (id , nombre , precio , stock , img , categoria){
-        this.id = id
-        this.nombre = nombre
-        this.precio = precio
-        this.stock = stock
-        this.img = img
-        this.categoria = categoria
+const productos = {
+    producto1:
+        {
+            nombre: 'Mate',
+            id: 1,
+            precio: 1500,
+            stock: 20,
+            img: './img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg',
+            categoria: 'mates'
+        },
+    producto2:
+        {
+            nombre: 'Salsero',
+            id: 2,
+            precio: 500,
+            stock: 20,
+            img: './img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg',
+            categoria: 'cocina'
+        },
+    producto3:
+        {
+            nombre: 'Taza',
+            id: 3,
+            precio: 800,
+            stock: 20,
+            img: './img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg',
+            categoria: 'vajilla'
+        }
     }
-}
 
-let productos = []
-
-let producto1 = new Productos ( 1 , "Mate" , 1500 , 20 , "./img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg" , "mates")
-productos.push(producto1)
-let producto2 = new Productos ( 2 , "Salsero" , 500 , 20 , "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg" , "cocina")
-productos.push(producto2)
-let producto3 = new Productos ( 3 , "Taza" , 2500 , 20 , "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg" , "vajilla")
-productos.push(producto3)
-
-for (let producto of productos) 
+for (let producto of [productos.producto1 , productos.producto2 , productos.producto3]) 
 {
     let cartas = document.getElementById("card")
     cartas.innerHTML += `
-                    <div class="card h-100">
+                    <div class="card h-100 mx-4">
                         <img class="card-img" src="${producto.img}"/>
                         <div class="card-body">
                             <div class="text-center">
@@ -52,13 +62,13 @@ for (let producto of productos)
                                         <div class="div d-flex">
                                             <div>
                                                 <label class="btn" style="cursor: initial; border: solid 1px black;" for="">Unidades:</label>    
-                                                <input class="btn unidad " type="number" name="unidades" placeholder="1" style="border: solid 1px black; width: 20%; cursor: text;">
+                                                <input class="btn unidad" type="number" name="unidades" placeholder="1" style="border: solid 1px black; width: 20%; cursor: text;">
                                             </div>
                                             <div>    
                                                 <button class="btn mx-2 confirmar_unidad" style="border: solid 1px black;" value=${producto.precio}>Confirmar <i class="bi bi-check-circle"></i></button>
                                             </div>
                                         </div>
-                                        <button id="agregado_al_carro "onclick="agregado_al_carro(${producto.id})" class="justify-content-center btn btn-outline-dark mt-auto" data-bs-dismiss="modal">Agregar al <i class="bi bi-cart2"></i></button>
+                                        <button onclick="agregado_al_carro(${producto.id})" class="badge_in justify-content-center btn btn-outline-dark mt-auto" data-bs-dismiss="modal">Agregar al <i class="bi bi-cart2"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -67,28 +77,58 @@ for (let producto of productos)
                 `
 }
 
+
 const carrito = []
 
 function agregado_al_carro(id)
 {   
-    let index = 0
-    let producto = productos.find(element => element.id == id);
-    if(producto)
+    if (productos.producto1.id == id)
     {
-        carrito.push(producto);
+        carrito.push(productos.producto1); 
         let carroVacio = document.getElementById("carroVacio")
         carroVacio.innerText = ""
         let carroProductos = document.getElementById("compras")
         carroProductos.innerHTML += `
             <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
-                <div class="btn">Producto: ${producto.nombre}</div>
-                <div class="btn">Unidades: ${getUnidad(index)}</div>
-                <div class="btn">Precio por unidad: ${producto.precio}</div>
-                <div class="btn">Total: ${getUnidad(index) * producto.precio}</div>  
-                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red" onclick="eliminar(${producto.id})"></div>   
+                <div class="btn">Producto: ${productos.producto1.nombre}</div>
+                <div class="btn">Unidades: ${productos.producto1.unidad} </div>
+                <div class="btn">Precio por unidad: ${productos.producto1.precio}</div>
+                <div class="btn">Total: ${productos.producto1.unidad * productos.producto1.precio}</div>  
+                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red"></div>   
             </div>   
-        ` 
-        index++
+        `
+    }
+    else if (productos.producto2.id == id)
+    {
+        carrito.push(productos.producto2); 
+        let carroVacio = document.getElementById("carroVacio")
+        carroVacio.innerText = ""
+        let carroProductos = document.getElementById("compras")
+        carroProductos.innerHTML += `
+            <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
+                <div class="btn">Producto: ${productos.producto2.nombre}</div>
+                <div class="btn">Unidades: ${productos.producto2.unidad} </div>
+                <div class="btn">Precio por unidad: ${productos.producto2.precio}</div>
+                <div class="btn">Total: ${productos.producto2.unidad * productos.producto2.precio}</div>  
+                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red"></div>   
+            </div>   
+        `
+    }
+    else if (productos.producto3.id == id)
+    {
+        carrito.push(productos.producto3); 
+        let carroVacio = document.getElementById("carroVacio")
+        carroVacio.innerText = ""
+        let carroProductos = document.getElementById("compras")
+        carroProductos.innerHTML += `
+            <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
+                <div class="btn">Producto: ${productos.producto3.nombre}</div>
+                <div class="btn">Unidades: ${productos.producto3.unidad} </div>
+                <div class="btn">Precio por unidad: ${productos.producto3.precio}</div>
+                <div class="btn">Total: ${productos.producto3.unidad * productos.producto3.precio}</div>  
+                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red"></div>   
+            </div>   
+        `
     }
     console.log(carrito)
     let carro = document.getElementById("carrobutton");
@@ -96,36 +136,54 @@ function agregado_al_carro(id)
     carro.innerText = num;
 }
 
-const getUnidad = (index) =>
+
+const getUnidad = (value) =>
 {
-    let unidadbuttons = document.getElementsByClassName("unidad");
-    let i = 0;
-    for (const button of unidadbuttons)
-    {
-        if(i == index)
+    if (productos.producto1.precio == value){
+        let unidadbuttons = document.getElementsByClassName("unidad");
+        for (const button of unidadbuttons)
         {
-            return button.value;
+                productos.producto1.unidad = button.value
+                const {unidad} = productos.producto1
+                return unidad
         }
-        i++;
+    }
+    else if (productos.producto2.precio == value){
+        let unidadbuttons = document.getElementsByClassName("unidad");
+        for (const button of unidadbuttons)
+        {
+            productos.producto2.unidad = button.value
+            const {unidad} = productos.producto2
+            return unidad
+        }
+    }
+    else if (productos.producto3.precio == value){
+        let unidadbuttons = document.getElementsByClassName("unidad");
+        for (const button of unidadbuttons)
+        {
+            productos.producto3.unidad = button.value
+            const {unidad} = productos.producto3
+            return unidad
+        }
     }
 }
 
 const loadConfirmEvents = () =>
 {
     let confirmbuttons = document.getElementsByClassName("confirmar_unidad");
-    let index = 0;
     for (const button of confirmbuttons)
     {
         button.addEventListener("click" , function(){
             let value = button.value;
             console.log("value" , value);
-            let unidad = getUnidad(index);
-            console.log('unidad' ,  unidad);    
-            index++     
+            let unidad = getUnidad(value);
+            console.log('unidad' ,  unidad);
         });
     }
-}
+    }
 loadConfirmEvents();
+
+
         
 
 
