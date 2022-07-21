@@ -86,7 +86,7 @@ function agregado_al_carro(id)
     {
         carrito.push(productos.producto1); 
         let carroVacio = document.getElementById("carroVacio")
-        carroVacio.innerText = ""
+        carroVacio.innerText = "Su carrito:"
         let carroProductos = document.getElementById("compras")
         carroProductos.innerHTML += `
             <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
@@ -94,7 +94,7 @@ function agregado_al_carro(id)
                 <div class="btn">Unidades: ${productos.producto1.unidad} </div>
                 <div class="btn">Precio por unidad: ${productos.producto1.precio}</div>
                 <div class="btn">Total: ${productos.producto1.unidad * productos.producto1.precio}</div>  
-                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red"></div>   
+                <div class="btn btn-close buttons_borrar" style="width: 2rem; height: 2rem; background-color: red"></div>   
             </div>   
         `
     }
@@ -102,7 +102,7 @@ function agregado_al_carro(id)
     {
         carrito.push(productos.producto2); 
         let carroVacio = document.getElementById("carroVacio")
-        carroVacio.innerText = ""
+        carroVacio.innerText = "Su carrito:"
         let carroProductos = document.getElementById("compras")
         carroProductos.innerHTML += `
             <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
@@ -110,7 +110,7 @@ function agregado_al_carro(id)
                 <div class="btn">Unidades: ${productos.producto2.unidad} </div>
                 <div class="btn">Precio por unidad: ${productos.producto2.precio}</div>
                 <div class="btn">Total: ${productos.producto2.unidad * productos.producto2.precio}</div>  
-                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red"></div>   
+                <div class="btn btn-close buttons_borrar" style="width: 2rem; height: 2rem; background-color: red"></div>   
             </div>   
         `
     }
@@ -118,7 +118,7 @@ function agregado_al_carro(id)
     {
         carrito.push(productos.producto3); 
         let carroVacio = document.getElementById("carroVacio")
-        carroVacio.innerText = ""
+        carroVacio.innerText = "Su carrito:"
         let carroProductos = document.getElementById("compras")
         carroProductos.innerHTML += `
             <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
@@ -126,7 +126,7 @@ function agregado_al_carro(id)
                 <div class="btn">Unidades: ${productos.producto3.unidad} </div>
                 <div class="btn">Precio por unidad: ${productos.producto3.precio}</div>
                 <div class="btn">Total: ${productos.producto3.unidad * productos.producto3.precio}</div>  
-                <div class="btn btn-close" style="width: 2rem; height: 2rem; background-color: red"></div>   
+                <div class="btn btn-close buttons_borrar" style="width: 2rem; height: 2rem; background-color: red"></div>   
             </div>   
         `
     }
@@ -134,8 +134,16 @@ function agregado_al_carro(id)
     let carro = document.getElementById("carrobutton");
     let num = carrito.length;
     carro.innerText = num;
-}
 
+    let buttons_borrar = document.querySelectorAll(".buttons_borrar")
+    for (let button of buttons_borrar) {
+        button.addEventListener("click" , function(e){
+            let borrar = e.target
+            let outNode = borrar.parentNode
+            outNode.remove()
+        })
+    }
+}
 
 const getUnidad = (value) =>
 {
@@ -180,7 +188,7 @@ const loadConfirmEvents = () =>
             console.log('unidad' ,  unidad);
         });
     }
-    }
+}
 loadConfirmEvents();
 
 
