@@ -30,73 +30,80 @@ const productos = {
 
 for (let producto of [productos.producto1 , productos.producto2 , productos.producto3]) 
 {
+    const {img} = producto
+    const {nombre} = producto
+    const {precio} = producto
+    const {id} = producto
     let cartas = document.getElementById("card")
     cartas.innerHTML += `
                     <div class="card h-100 mx-4">
-                        <img class="card-img" src="${producto.img}"/>
+                        <img class="card-img" src="${img}"/>
                         <div class="card-body">
                             <div class="text-center">
-                                <p class="name" style="color: black;">${producto.nombre} - <span class="price" id="precio" style="color: black;">$${producto.precio}</span></p>
+                                <p class="name" style="color: black;">${nombre} - <span class="price" id="precio" style="color: black;">$${precio}</span></p>
                             </div>
                         </div>
                         <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a onclick="getModal(${producto.id})" "id="agregar_al_carro" class="btn btn-outline-dark mt-auto" href="#" data-bs-toggle="modal" data-bs-target="#modalCompra${producto.id}">Agregar al <i class="bi bi-cart2"></i></a></div>
-                            <!--<div class="text-center"><a class="btn btn-dark mt-1" href="#">Comprar ahora</i></a></div>-->
+                            <div class="text-center"><a onclick="agregado_al_carro(${id})" href="#badge" "id="agregar_al_carro" class="btn btn-outline-dark mt-auto" href="#">Agregar al <i class="bi bi-cart2"></i></a></div>
                         </div> 
                     </div>
-                    <section id="open-modal">
-                        <div tabindex="-1" aria-labelledby="modalCompra${producto.id}" class="modal fade" style="background-color: rgba(0, 0, 0, 0.5);" id="modalCompra${producto.id}" aria-hidden="true" data-bs-backdrop="static">
-                            <div class="modal-dialog modal modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header d-flex justify-content-between align-items-center">
-                                        <p class="p m-0" style="color: black;">${producto.nombre}</p>
-                                        <button type="button" class="btn-close align-self-end p-0 m-0" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body modal-body">
-                                        <div class="div d-flex flex-row justify-content-between">
-                                            <img src="${producto.img}" alt="" width="49%" height="300px">
-                                            <img src="${producto.img}" alt="" width="49%" height="300px">
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer d-flex flex-column">
-                                        <div class="div d-flex">
-                                            <div>
-                                                <label class="btn" style="cursor: initial; border: solid 1px black;" for="">Unidades:</label>    
-                                                <input class="btn unidad" type="number" name="" placeholder="0" style="border: solid 1px black; width: 20%; cursor: text;">
-                                            </div>
-                                            <div>    
-                                                <button class="btn mx-2 confirmar_unidad" style="border: solid 1px black;" value=${producto.precio}>Confirmar <i class="bi bi-check-circle"></i></button>
-                                            </div>
-                                        </div>
-                                        <button onclick="agregado_al_carro(${producto.id})" class="badge_in justify-content-center btn btn-outline-dark mt-auto" data-bs-dismiss="modal">Agregar al <i class="bi bi-cart2"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                 `
 }
 
 const carrito = []
+let numero = 1
 
 function agregado_al_carro(id)
 {   
     for (const producto of [productos.producto1, productos.producto2, productos.producto3]) {
     if (producto.id == id)
         {
+            const {nombre} = producto
+            const {precio} = producto
+            const {img} = producto
             carrito.push(producto); 
             let carroVacio = document.getElementById("carroVacio")
-            carroVacio.innerText = "Su carrito:"
+            carroVacio.innerText = `Su carrito:`
             let carroProductos = document.getElementById("compras")
             carroProductos.innerHTML += `
-                <div class="container btn m-2 p-2 d-flex flex-row justify-content-between" style="background-color: white;">
-                    <div class="btn">Producto: ${producto.nombre}</div>
-                    <div class="btn">Unidades: ${producto.unidad} </div>
-                    <div class="btn">Precio por unidad: $${producto.precio}</div>
-                    <div class="btn">Total: $${producto.unidad * producto.precio}</div>  
-                    <div class="btn btn-close buttons_borrar" style="width: 2rem; height: 2rem; background-color: red"></div>   
-                </div>   
+                <div id="badge" class="container btn m-2 p-2 d-flex flex-row justify-content-between align-items-center" style="background-color: rgba(255,255,255);">
+                    <img class="card-img" src="${img}" style="width: 4.5rem ; height: 6rem"/>     
+                    <div class="btn">Producto: ${nombre}</div>
+                    <div class="btn">Precio: $${precio}</div> 
+                    <div class="btn">Unidades: <input type="number" style="width: 3rem" placeholder="1" class="unidades"></></div> 
+                    <div class="btn" id="total">Total: $${precio}</div>
+                    <div class="btn num" style="visibility: hidden;">${numero}</div>
+                    <button class="btn btn-success">Confirmar <i class="bi bi-check2" style="font-size:1.2rem"></i></button>   
+                    <div class="skip"></div>     
             `
+                    let check = document.getElementsByClassName("btn-success")
+                    for (const button of check) {
+                    button.addEventListener("click" , function(e) {
+                        let hijo = e.target
+                        let padre = hijo.parentNode
+                        let node = padre.parentNode
+                        let unidades = node.querySelector("input")
+                        producto.unidad = unidades.value
+                        producto.numero = numero
+                        numero++
+                        let total = node.querySelector("#total")
+                        let suma = total.innerText
+                        suma = precio * unidades.value
+                        total.innerText = `Total: $${suma}`
+                        let getUnidades = unidades.parentNode
+                        getUnidades.innerText = `Unidades: ${unidades.value}`
+                        let confirmar = padre.querySelector(".btn-success")
+                        confirmar.remove()
+                        let skip = padre.querySelector(".skip")
+                        skip.innerHTML = `                    
+                        <button class="btn btn-danger buttons_borrar"><i class="bi bi-x" style="font-size:1.2rem"></i></button>   
+                        `
+                        console.log('Carrito:' , carrito)
+                        let carrito_JSON = JSON.stringify(carrito)
+                        localStorage.setItem("carrito" , carrito_JSON)
+                    }) 
+                }
+
             let buttonCompra = document.getElementById("comprarAhora")
             buttonCompra.innerHTML = '<button id="comprarAhora" class="btn btn-light btn-outline-dark">Comprar ahora</button>'
             
@@ -104,13 +111,22 @@ function agregado_al_carro(id)
             for (let button of buttons_borrar) {
                 button.addEventListener("click" , function(e){
                     let borrar = e.target
-                    let outNode = borrar.parentNode
+                    let padre = borrar.parentNode
+                    let outNode = padre.parentNode
                     outNode.remove()
-                    carrito.splice(0,1,)
+                    const remove = () => {
+                        let num = outNode.querySelector(".num")
+                        let index = num.innerText
+                        return index
+                    }            
+                    remove()  
+                    function buscar_index(producto){    
+                        return producto.numero == remove()
+                    }
+                    let resultado_find = carrito.find(buscar_index);
+                    console.log("Se eliminó del carrito a: " , resultado_find);
+                    indexOf(resultado_find)
                     let rest = restCarrito()
-                    console.log(carrito)
-                    let carrito_JSON = JSON.stringify(carrito)
-                    localStorage.setItem("carrito" , carrito_JSON)
                 })
             }
         }
@@ -123,40 +139,54 @@ function agregado_al_carro(id)
         num = num - 1
         carro.innerText = num;
     }
-    console.log(carrito)
+}
 
+const indexOf = (index) => {
+    const eliminar = carrito.indexOf(index)
+    carrito.splice( eliminar , 1 );
+    console.log("Carrito: " , carrito);
     let carrito_JSON = JSON.stringify(carrito)
     localStorage.setItem("carrito" , carrito_JSON)
 }
 
-const getModal = (id) => 
+let getJSON = localStorage.getItem("carrito");
+const recoverCarro = JSON.parse(getJSON)
+const length = recoverCarro.length
+const getCarrito = [...JSON.parse(getJSON)]
+const recover = (length > 0) ? true : false
+recover ? console.log('Carrito:' , getCarrito) : null
+if (recover == true) 
 {
-    for (const producto of [productos.producto1 , productos.producto2 , productos.producto3]) {
-        if (producto.id == id) 
-        {
-            let confirmbuttons = document.getElementsByClassName("confirmar_unidad");
-            for (const button of confirmbuttons)
+        for (let i = 0; i < getCarrito.length; i++) {
+            carrito.push(getCarrito[i])            
+            for (let producto of [(carrito[i])])
             {
-                button.addEventListener("click" , function(e){
-                    let hijo = e.target
-                    let padre = hijo.parentNode
-                    let abuelo = padre.parentNode
-                    let unidad = abuelo.querySelector("input")
-                    console.log("unidades" , unidad.value)
-                    let value = button.value;
-                    console.log("value" , value); 
-                    producto.unidad = unidad.value
-                    console.log(producto)
-                });
+                const {nombre} = producto
+                const {unidad} = producto
+                const {img} = producto
+                const {precio} = producto
+                let carroVacio = document.getElementById("carroVacio")
+                carroVacio.innerText = "Su carrito:"
+                let carroProductos = document.getElementById("compras")
+                carroProductos.innerHTML += `
+                    <div id="badge" class="container btn m-2 p-2 d-flex flex-row justify-content-between align-items-center" style="background-color: rgba(255,255,255);">
+                        <img class="card-img" src="${img}" style="width: 4.5rem ; height: 6rem"/>     
+                        <div class="btn">Producto: ${nombre}</div>
+                        <div class="btn">Precio: $${precio}</div> 
+                        <div class="btn">Unidades: ${unidad}</></div> 
+                        <div class="btn" id="total">Total: $${precio * unidad}</div>
+                        <div class="btn num" style="visibility: hidden;">${numero}</div>
+                        <button class="btn btn-danger buttons_borrar"><i class="bi bi-x" style="font-size:1.2rem"></i></button>   
+                    </div>   
+                `
+
+                let buttonCompra = document.getElementById("comprarAhora")
+                buttonCompra.innerHTML = '<button id="comprarAhora" class="btn btn-light btn-outline-dark">Comprar ahora</button>'
+                let carro = document.getElementById("carrobutton");
+                let num = carrito.length;
+                carro.innerText = num;
+                
             }
         }
     }
-}
-
-let getJSON = localStorage.getItem("carrito");
-console.log("Carrito:" , JSON.parse(getJSON))
-
-        
-
-
 
