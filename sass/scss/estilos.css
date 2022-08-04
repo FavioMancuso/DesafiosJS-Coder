@@ -577,6 +577,14 @@ main .row img {
   }
 }
 
+.swal2-cancel {
+  margin-right: 0.5rem;
+}
+
+.swal2-confirm {
+  margin-left: 0.5rem;
+}
+
 body {
   background-color: rgb(3, 37, 48);
 }
