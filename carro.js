@@ -1,60 +1,3 @@
-const productos = {
-    producto1:
-        {
-            nombre: 'Mate',
-            id: 1,
-            precio: 1500,
-            stock: 20,
-            img: './img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg',
-            categoria: 'mates'
-        },
-    producto2:
-        {
-            nombre: 'Salsero',
-            id: 2,
-            precio: 500,
-            stock: 20,
-            img: './img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg',
-            categoria: 'cocina'
-        },
-    producto3:
-        {
-            nombre: 'Taza',
-            id: 3,
-            precio: 800,
-            stock: 20,
-            img: './img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg',
-            categoria: 'vajilla'
-        },
-            producto4:
-            {
-                nombre: 'Mate',
-                id: 4,
-                precio: 1500,
-                stock: 20,
-                img: './img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg',
-                categoria: 'mates'
-            },
-        producto5:
-            {
-                nombre: 'Salsero',
-                id: 5,
-                precio: 500,
-                stock: 20,
-                img: './img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg',
-                categoria: 'cocina'
-            },
-        producto6:
-            {
-                nombre: 'Taza',
-                id: 6,
-                precio: 800,
-                stock: 20,
-                img: './img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg',
-                categoria: 'vajilla'
-            }
-        }
-
 const carrito = []
 
 const indexOf = (index) => {
@@ -68,6 +11,7 @@ const indexOf = (index) => {
     localStorage.setItem("carrito" , carrito_JSON)
 }
 
+const loadPage = () => {
 let getJSON = localStorage.getItem("carrito");
 const recoverCarro = JSON.parse(getJSON)
 const length = recoverCarro.length
@@ -83,11 +27,7 @@ if (recover == true)
             carrito.push(getCarrito[i])        
             for (let producto of [(carrito[i])])
             {
-                const {nombre} = producto
-                const {unidad} = producto
-                const {img} = producto
-                const {numero} = producto
-                const {precio} = producto
+                const {nombre, unidad, img, numero, precio} = producto
                 let carroProductos = document.getElementById("export_carro")
                 carroProductos.innerHTML += `
                     <div id="badge" class="container btn m-2 p-2 mt-2 mb-2 d-flex flex-row justify-content-between align-items-center" style="background-color: rgba(255,255,255);cursor: initial">
@@ -108,6 +48,8 @@ if (recover == true)
         let buttonCompra = document.getElementById("comprarAhora")
         buttonCompra.innerHTML = '<button id="comprarAhora" class="btn btn-light btn-outline-dark">Comprar ahora</button>'
     }
+}
+loadPage()
 
 const skip = (numero) => {
     let num = numero
@@ -170,13 +112,10 @@ const skip_producto = (numero) => {
 const refrescar = () => {
     setTimeout(() => {
         reload_page() 
-    }, 1500); 
+    }, 1200); 
 }
 
 const reload_page = () => {
     location.reload()
 } 
 
-let carro = document.getElementById("carrobutton");
-let num = carrito.length;
-carro.innerText = num;
