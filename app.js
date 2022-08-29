@@ -20,7 +20,6 @@ if (window.PaymentRequest){
     const paymentRequest = new PaymentRequest(metodopago , detallePago);
 
     paymentRequest.show();
-    paymentRequest.then(functi);
 }
 else {
     console.log("API no soportada...");
