@@ -118,7 +118,7 @@ main section p {
   font-size: medium;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: white;
-  margin-top: 0.5rem;
+  margin-top: 1.25rem;
   margin-bottom: 0.25rem;
 }
 main section .row {
@@ -454,13 +454,29 @@ header .section-end a {
     flex-direction: column;
   }
 }
+@media screen and (min-width: 768px) {
+  header .header-mobile {
+    display: none;
+  }
+  header .header-lg {
+    display: flex;
+    flex-direction: column;
+  }
+  header .header-lg .navbar-collapse {
+    justify-content: flex-end;
+  }
+}
 
 main {
   height: auto;
   padding-bottom: 0rem;
-  flex-direction: row;
+  flex-direction: column;
+}
+main .getProd {
+  flex-direction: column;
 }
 main p {
+  margin-top: 2rem;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -470,111 +486,101 @@ main p {
   margin-bottom: 0;
   text-align: center;
 }
+main #fil_sea {
+  align-items: baseline;
+}
+main #fil_sea span {
+  font-weight: 700;
+}
+main #fil_sea .form-control {
+  height: 80%;
+  font-size: 0.8rem;
+}
 main .productos-header {
   display: flex;
+  align-content: center;
 }
-main .row {
-  width: 93%;
-  height: auto;
-  margin: 0 auto;
-  --bs-gutter-x: 0.16rem;
+main .productos-header .card {
+  width: 65%;
 }
-main .row .article {
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
+@media screen and (min-width: 540px) {
+  main .productos-header .card {
+    width: 55%;
+  }
 }
-main .row .article figure {
-  border-radius: 0.5rem;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 300ms ease-out;
-  margin-bottom: 0.65rem;
+@media screen and (min-width: 768px) {
+  main .productos-header #card, main .productos-header #card_br, main .productos-header #card_br1, main .productos-header #card_br2, main .productos-header #card_br3, main .productos-header #filtrados1, main .productos-header #filtrados2, main .productos-header #filtrados3 {
+    flex-direction: row !important;
+  }
+  main .productos-header .card {
+    width: 32%;
+  }
 }
-main .row .article figure .capa {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  transition: all 500ms ease-out;
-  opacity: 0;
-  visibility: hidden;
-  text-align: center;
-  flex-direction: column;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-main .row .article figure .capa a {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-main .row .article figure .capa a i {
-  color: white !important;
-}
-main .row .article figure .capa h3 {
-  font-size: 1.2rem;
-  color: white;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  transition: all 500ms ease-out;
-  margin-top: 2rem;
-}
-main .row .article figure .capa p {
-  color: white;
-  font-size: 0.9rem;
-  width: 100%;
-  max-width: 16rem;
-  margin: 0rem auto;
-  font-weight: 100;
-}
-main .row .article figure:hover > .capa {
-  opacity: 1;
-  visibility: visible;
-}
-main .row img {
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-}
+
 @media screen and (min-width: 992px) {
-  main .filter {
-    height: auto;
-    width: 15%;
-    background-color: black;
-    color: white;
+  main .getProd {
+    flex-direction: row !important;
+  }
+  main .getProd #fil_sea {
+    width: 65%;
+    height: 87vh;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 13%;
+    left: 0%;
   }
-  main .productos {
+  main .getProd #fil_sea .search {
     width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 17.5%;
+    left: 0%;
+    z-index: 100;
   }
-  main .productos-header {
+  main .getProd #fil_sea .filt {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 27%;
+    left: 0%;
+    z-index: 50;
+  }
+  main .getProd #fil_sea .filtros {
+    width: 100%;
+    height: 45vh;
+    overflow-y: scroll;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 35%;
+    left: 0%;
+  }
+  main .getProd #fil_sea #reestablecer {
+    margin: 0rem auto;
+    margin-top: 4.5rem;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 2rem;
+    left: 0%;
+  }
+  main .getProd #fil_sea span {
+    margin: 0rem;
+    padding: 0rem;
+  }
+  main .getProd .productos-header {
     display: flex;
-    width: auto;
+    align-content: center;
   }
-  main .productos-header .d-flex {
-    flex-direction: row;
-    justify-content: space-evenly;
+  main .getProd .productos-header .card {
+    width: 28%;
   }
-  main .productos-header .d-flex .h-100 {
-    width: 16rem;
-  }
-  main .productos-header .d-flex .h-100 .card-body {
-    padding-bottom: 0;
-  }
-  main .productos-header .d-flex .h-100 .text-center p {
-    font-size: 1rem;
-    color: black;
-  }
-  main #productos-mobile {
-    display: none;
-  }
+}
+.margen {
+  width: 5rem;
+  height: 10rem;
+  background-color: rgb(3, 37, 48);
 }
 
 .swal2-cancel {
@@ -585,6 +591,8 @@ main .row img {
   margin-left: 0.5rem;
 }
 
+/*
+*/
 body {
   background-color: rgb(3, 37, 48);
 }

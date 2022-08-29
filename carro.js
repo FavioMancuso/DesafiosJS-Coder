@@ -45,11 +45,21 @@ if (recover == true)
                 carro.innerText = num;
             }
         }
-        let buttonCompra = document.getElementById("comprarAhora")
-        buttonCompra.innerHTML = '<button id="comprarAhora" class="btn btn-light btn-outline-dark">Comprar ahora</button>'
     }
 }
 loadPage()
+
+function iniciarMap(){
+    var coord = {lat:-34.7242466 ,lng:-58.2608255};
+    var map = new google.maps.Map(document.getElementById('map'),{
+        zoom: 10,
+        center: coord
+    });
+    var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+    });
+}
 
 const skip = (numero) => {
     let num = numero

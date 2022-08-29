@@ -3,53 +3,98 @@
             "nombre": "Mate",
             "id": 1,
             "precio": 1500,
+            "valor": "2",
             "stock": 20,
             "img": "./img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg",
-            "categoria": "mates"
+            "categoria": "mates",
+            "diseño": "floreado"
         },
 
         {
             "nombre": "Salsero",
             "id": 2,
-            "precio": 500,
+            "precio": 800,
+            "valor": "1",
             "stock": 20,
             "img": "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg",
-            "categoria": "cocina"
+            "categoria": "cocina",
+            "diseño": "bw"
         },
 
         {
             "nombre": "Taza",
             "id": 3,
-            "precio": 800,
+            "precio": 1200,
             "stock": 20,
+            "valor": "2",
             "img": "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg",
-            "categoria": "vajilla"
+            "categoria": "vajilla",
+            "diseño": "bw"
         },
 
         {
             "nombre": "Set para Sushi",
             "id": 4,
             "precio": 2500,
+            "valor": "3",
             "stock": 20,
             "img": "./img/sushi.jpeg",
-            "categoria": "vajilla"
+            "categoria": "vajilla",
+            "diseño": "floreado"
         },
 
         {
             "nombre": "Boul",
             "id": 5,
-            "precio": 1200,
+            "precio": 2100,
+            "valor": "3",
             "stock": 20,
             "img": "./img/boul.jpeg",
-            "categoria": "cocina"
+            "categoria": "cocina",
+            "diseño": "bw"
         },
         
         {
             "nombre": "Plato",
             "id": 6,
             "precio": 900,
+            "valor": "1",
             "stock": 20,
             "img": "./img/plato.jpeg",
-            "categoria": "vajilla"
+            "categoria": "vajilla",
+            "diseño": "floreado"
+        },
+        
+        {
+            "nombre": "Mate",
+            "id": 7,
+            "precio": 2500,
+            "valor": "3",
+            "stock": 20,
+            "img": "./img/mate2Bw.jpeg",
+            "categoria": "mates",
+            "diseño": "bw"
+        },
+
+        {
+            "nombre": "Salsero",
+            "id": 8,
+            "precio": 800,
+            "valor": "1",
+            "stock": 20,
+            "img": "./img/WhatsApp Image 2022-08-24 at 8.00.48 PM.jpeg",
+            "categoria": "vajilla",
+            "diseño": "lunar"
+        },
+
+        {
+            "nombre": "Taza",
+            "id": 9,
+            "precio": 1200,
+            "valor": "2",
+            "stock": 20,
+            "img": "./img/WhatsApp Image 2022-08-24 at 8.00.50 PM.jpeg",
+            "categoria": "cocina",
+            "diseño": "lunar"
         }
 ]

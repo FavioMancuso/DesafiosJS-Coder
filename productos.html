@@ -21,7 +21,7 @@
             </div>
             <nav>
             <div id="navbar" class="container-fluid p-0">
-                <nav class="navbar navbar-expand-lg" style="background-color: white;">
+                <nav class="navbar navbar-expand-md" style="background-color: white;">
                     <div class="container d-flex">
                         <a class="logo" href="index.html">DECO<span>VSR</span></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation" style="color: white;">
@@ -78,221 +78,138 @@
             </div>
         </div>
     </header>
-    <main class="d-flex">
-        <section class="filter">
-            <span>F</span>
-            <span>I</span>
-            <span>L</span>
-            <span>T</span>
-            <span>R</span>
-            <span>O</span>
-            <span>S</span>
-        </section>
-        <section class="productos">
-            <p class="title">Productos más vendidos</p>
-            <div class="productos-header d-flex flex-column">
-                <div id="card" class="container-fluid d-flex justify-content-center mt-3 mb-2">
-                    
+    <main class="d-flex flex-column">
+        <div class="getProd d-flex">
+            <section id="fil_sea" class="filter container-fluid d-flex justify-content-between pt-4 px-4 pb-0 align-items-baseline" style="background-color: black;">
+                <form class="search d-flex">
+                    <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn" type="submit"><i class="bi bi-search text-white"></i></button>
+                </form>
+                <span class="filt btn text-white mt-4 mb-0"><i class="bi bi-filter-left"></i> Filtros</span>
+                <br>
+                <div id="filtros" class="filtros text-white">
+                    <br>
+                    <a id="filtro_productos" class="btn btn-primary mx-2 text-white"><span><i class="bi bi-arrow-right-short"></i> Productos</span></a>
+                    <a id="close_prod" class="visually-hidden" style="background-color: red;" for=""></a>
+                    <br>
+                    <br>
+                    <div id="filtros_prod" class="visually-hidden text-white">
+                        <input id="filtro1" name="filtros1" class="mx-3" type="radio" value="vajilla">
+                        <label for="filtro1">Vajilla</label>
+                        <br>
+                        <br>
+                        <input id="filtro2" name="filtros1" class="mx-3" type="radio" value="cocina">
+                        <label for="filtro2">Cocina</label>
+                        <br>
+                        <br>
+                        <input id="filtro3" name="filtros1" class="mx-3" type="radio" value="mates">
+                        <label for="filtro3">Mates</label>
+                        <br>
+                    </div>
+                    <br>
+                    <a id="filtro_diseño" class="btn btn-primary text-white mx-2 mt-3"><span><i class="bi bi-arrow-right-short"></i> Diseño</span></a>
+                    <a id="close_dis" class="visually-hidden" style="background-color: red;" for=""></a>
+                    <br>
+                    <br>
+                    <div id="filtros_dis" class="visually-hidden text-white">
+                        <input id="diseño1" name="filtros2" class="mx-3" type="radio" value="floreado">
+                        <label for="diseño1">Floreado</label>
+                        <br>
+                        <br>
+                        <input id="diseño2" name="filtros2" class="mx-3" type="radio" value="bw">
+                        <label for="diseño2">Black & White</label>
+                        <br>
+                        <br>
+                        <input id="diseño3" name="filtros2" class="mx-3" type="radio" value="lunar">
+                        <label for="diseño3">Lunar</label>
+                        <br>
+                    </div>
+                    <br>
+                    <a id="filtro_precios" class="btn btn-primary text-white mx-2 mt-3"><span><i class="bi bi-arrow-right-short"></i> Precios</span></a>
+                    <a id="close_precios" class="visually-hidden" style="background-color: red;" for=""></a>
+                    <br>
+                    <br>
+                    <div id="filtros_pre" class="visually-hidden text-white">
+                        <input id="precio1" name="filtros3" class="mx-3" type="radio" value="1">
+                        <label for="precio1">Hasta $1000</label>
+                        <br>
+                        <br>
+                        <input id="precio2" name="filtros3" class="mx-3" type="radio" value="2">
+                        <label for="precio2">De $1000 hasta $2000</label>
+                        <br>
+                        <br>
+                        <input id="precio3" name="filtros3" class="mx-3" type="radio" value="3">
+                        <label for="precio3">Más de $2000</label>
+                        <br>
+                    </div>
+                    <br>
                 </div>
-                <div id="card_br" class="container-fluid d-flex justify-content-center mb-4">
-                    
-                </div>
-            </div>
-            <section class="d-flex flex-column align-items-center justify-content-center" id="carro">
-                <div id="compras" class="mt-3 mb-3">
-                    <p id="carroVacio"></p>
-                </div>
+                <br>
+                <label id="reestablecer" class="visually-hidden" for="">Reestablecer</label>
+                <br>
             </section>
-            
-
-
-
-            <!--<section id="productos-mobile" class="row">
-                <div class="col-12">
-                    <div class="article mt-2" id="article1">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.14 PM (1).jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
+            <section class="productos mb-0">
+                <div class="productos-header d-flex flex-column mb-0">
+                    <p class="title visually-hidden" id="title1">Vajilla</p>
+                    <div id="filtrados1" class="visually-hidden">
+                        
                     </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
+                    <p class="title visually-hidden" id="title2">Cocina</p>
+                    <div id="filtrados2" class="visually-hidden">
+                        
                     </div>
-                    <div class="article mt-2" id="article2">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.14 PM (2).jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
+                    <p class="title visually-hidden" id="title3">Mates</p>
+                    <div id="filtrados3" class="visually-hidden">
+                        
                     </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
+                    <p class="title visually-hidden" id="title4">Floreado</p>
+                    <div id="filtrados4" class="visually-hidden">
+                        
                     </div>
-                    <div class="article mt-2" id="article3">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
+                    <p class="title visually-hidden" id="title5">Black & White</p>
+                    <div id="filtrados5" class="visually-hidden">
+                        
                     </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
+                    <p class="title visually-hidden" id="title6">Lunar</p>
+                    <div id="filtrados6" class="visually-hidden">
+                        
                     </div>
-                    <div class="article mt-2" id="article4">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
+                    <p class="title visually-hidden" id="title7">Hasta $1000</p>
+                    <div id="filtrados7" class="visually-hidden">
+                        
                     </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
+                    <p class="title visually-hidden" id="title8">De $1000 a $2000</p>
+                    <div id="filtrados8" class="visually-hidden">
+                        
                     </div>
-                    <div class="article mt-2" id="article5">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
+                    <p class="title visually-hidden" id="title9">Más de $2000</p>
+                    <div id="filtrados9" class="visually-hidden">
+                        
                     </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
+                    <div id="card" class="container-fluid d-flex flex-column justify-content-center mt-3 mb-2">
+                        
                     </div>
-                    <div class="article mt-2" id="article6">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
+                    <div id="card_br" class="container-fluid d-flex flex-column justify-content-center mb-0">
+                        
                     </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
-                    </div>
-                    <div class="article mt-2" id="article7">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.14 PM (2).jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
-                    </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
-                    </div>
-                    <div class="article mt-2" id="article8">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.14 PM.jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
-                    </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
-                    </div>
-                    <div class="article mt-2" id="article9">
-                        <figure>
-                            <img src="./img/WhatsApp Image 2022-06-03 at 6.12.15 PM (1).jpeg" alt="">
-                            <div class="capa d-flex">
-                                <h3>Mate</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum obcaecati quo quod architecto nisi fugiat quos id facere! Similique est rem accusamus voluptatem soluta nemo voluptate. Quibusdam dolore harum soluta!</p>
-                                <btn class="btn btn-center text-white mt-2">$4.500</btn>
-                            </div>
-                        </figure>
-                    </div>
-                    <div class="div d-flex justify-content-between mb-3">
-                        <div class="btn-start">
-                            <a href="" class="btn"><i style="color: white;" class="bi bi-share"></i></a>
-                        </div>
-                        <div class="btn-end">
-                            <a href="" class="btn btn-light">Comprar ahora</a>
-                            <a href="" class="btn btn-dark btn-outline-dark text-white">Agregar al <i class="bi bi-cart2"></i></a>
-                        </div>
+                    <div id="card_br1" class="container-fluid d-flex flex-column justify-content-center mb-0">
+                        
                     </div>
                 </div>
-            </section>-->
-        </section>
+                <div id="badge" class="p0 m0">
+                    <section class="visually-hidden" id="carro">
+                        <div id="compras" class="mt-3 mb-3">
+                            <p id="carroVacio"></p>
+                        </div>
+                    </section>
+                </div>
+                <div class="margen"></div>
+            </section>
+        </div>            
     </main>
-    <footer style="background-color: black;">
+    <footer id="footer" style="background-color: black;">
         <div class="container py-2 my-0">
-            <ul class="nav justify-content-center border-bottom pb-2 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Nosotros</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contacto</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Condiciones</a></li>
-            </ul>
-            <p class="text-center text-muted">
+            <p class="text-center text-muted pt-2">
                 <i class="btn bi bi-instagram mx-2 px-1 py-0 rounded-pill"></i>
                 <i class="btn bi bi-telephone mx-2 px-1 py-0 rounded-pill"></i>
                 <i class="btn bi bi-envelope mx-2 px-1 py-0 rounded-pill"></i>
