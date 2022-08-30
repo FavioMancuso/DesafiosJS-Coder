@@ -11,18 +11,19 @@ const indexOf = (index) => {
     localStorage.setItem("carrito" , carrito_JSON)
 }
 
-const loadPage = () => {
-let getJSON = localStorage.getItem("carrito");
-const recoverCarro = JSON.parse(getJSON)
-const length = recoverCarro.length
-const getCarrito = [...JSON.parse(getJSON)]
-let getNumJSON = localStorage.getItem("numero")
-const recoverNum = JSON.parse(getNumJSON)
-numero = recoverNum
-const recover = (length > 0) ? true : false
-recover ? console.log('Carrito:' , getCarrito) : null
-if (recover == true) 
+const loadPage = () => 
 {
+    let getJSON = localStorage.getItem("carrito");
+    const recoverCarro = JSON.parse(getJSON)
+    const length = recoverCarro.length
+    const getCarrito = [...JSON.parse(getJSON)]
+    let getNumJSON = localStorage.getItem("numero")
+    const recoverNum = JSON.parse(getNumJSON)
+    numero = recoverNum
+    const recover = (length > 0) ? true : false
+    recover ? console.log('Carrito:' , getCarrito) : null
+    if (recover == true) 
+    {
     for (let i = 0; i < getCarrito.length; i++) {
             carrito.push(getCarrito[i])        
             for (let producto of [(carrito[i])])
@@ -46,6 +47,7 @@ if (recover == true)
             }
         }
     }
+    //checkOut(getCarrito)
 }
 loadPage()
 

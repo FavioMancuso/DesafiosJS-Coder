@@ -22,14 +22,14 @@
         },
 
         {
-            "nombre": "Taza",
+            "nombre": "Mate",
             "id": 3,
             "precio": 1200,
             "stock": 20,
             "valor": "2",
-            "img": "./img/WhatsApp Image 2022-06-03 at 6.12.15 PM.jpeg",
-            "categoria": "vajilla",
-            "diseño": "bw"
+            "img": "./img/matelunar.jpeg",
+            "categoria": "mates",
+            "diseño": "lunar"
         },
 
         {
