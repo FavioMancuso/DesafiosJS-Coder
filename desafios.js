@@ -1,6 +1,6 @@
 const getProducts = async() => {
     try{
-        const response = await fetch("/productos.json");
+        const response = await fetch("json/productos.json");
         const data = await response.json();
         console.log("data from .json: " , data)
         loadProducts(data)
@@ -380,7 +380,7 @@ function agregado_al_carro(tag)
 {   
     const loadCarro = async() => {
         try{
-            const response = await fetch("/productos.json");
+            const response = await fetch("json/productos.json");
             const data = await response.json();
             getProdCarro(data)
         }

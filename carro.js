@@ -47,7 +47,6 @@ const loadPage = () =>
             }
         }
     }
-    //checkOut(getCarrito)
 }
 loadPage()
 
